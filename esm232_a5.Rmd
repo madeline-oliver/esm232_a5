@@ -6,10 +6,36 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE,
+                      message = FALSE,
+                      warning = FALSE)
+
+library(tidyverse)
+library(purrr)
+library(deSolve)
 ```
 
-```{r}
+```{r settings.ode}
+source("popWithK.R")
 
+# set the initial population to be 1
+initialP = 1
+
+# the results will be shown from year 1 to year 50
+years = seq(from=1, to=50, by=1)
+
+# set the parameters: base growth rate r and carrying capacity K
+parms = list(r = 0.05, K = 20)
+
+# run the solver
+Ptime = ode(y=initialP, 
+            time=years, 
+            func=popWithK,
+            parms=parms)
+
+# rename the columns
+colnames(Ptime)=c("year","Population")
+
+tail(Ptime)
 ```
 
