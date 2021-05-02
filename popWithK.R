@@ -10,7 +10,7 @@
 #' @return population change in certain year
 
  
-popWithK = function(time, P, parms){
+popWithK = function(times, P, parms){
   
     delta.p = parms$r*P*(1-P/parms$K)
    
