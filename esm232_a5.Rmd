@@ -47,7 +47,7 @@ colnames(Ptime)=c("Year","Population")
 
 ### Graph the results
 ```{r, message=FALSE, warning=FALSE}
-ggplot(as.data.frame(Ptime), aes(year, Population)) +
+ggplot(as.data.frame(Ptime), aes(Year, Population)) +
   geom_point() +
   labs(y="Population", x = "Year", title = "Population Growth over 50 Years") +
   theme_bw()+
