@@ -33,7 +33,7 @@ parms = list(r = 0.05, K = 20)
 
 # run the solver
 Ptime = ode(y=initialP, 
-            time=years, 
+            times=years, 
             func=popWithK,
             parms=parms)
 
