@@ -38,7 +38,7 @@ Ptime = ode(y=initialP,
             parms=parms)
 
 # rename the columns
-colnames(Ptime)=c("year","Population")
+colnames(Ptime)=c("Year","Population")
 # attributes(Ptime)
 
 # Check to make sure year 50 is correct
@@ -49,7 +49,8 @@ colnames(Ptime)=c("year","Population")
 ```{r, message=FALSE, warning=FALSE}
 ggplot(as.data.frame(Ptime), aes(year, Population)) +
   geom_point() +
-  labs(y="Population", x = "years", title = "Population Growth over 50 Years") +
+  labs(y="Population", x = "Year", title = "Population Growth over 50 Years") +
+  theme_bw()+
   theme(plot.title = element_text(hjust = 0.5))
   
 ```
