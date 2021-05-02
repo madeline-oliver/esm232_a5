@@ -2,7 +2,9 @@
 title: "ESM 232 Assignment 5"
 author: "Madeline Oliver, Ruoyu Wang, Hannah Garcia"
 date: "4/28/2021"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -13,9 +15,11 @@ knitr::opts_chunk$set(echo = TRUE,
 library(tidyverse)
 library(purrr)
 library(deSolve)
+library(tinytex)
 ```
 
-```{r settings.ode}
+### Use ODE solver
+```{r settings.ode, message=FALSE, warning=FALSE}
 source("popWithK.R")
 
 # set the initial population to be 1
@@ -35,7 +39,18 @@ Ptime = ode(y=initialP,
 
 # rename the columns
 colnames(Ptime)=c("year","Population")
+# attributes(Ptime)
 
-tail(Ptime)
+# Check to make sure year 50 is correct
+# tail(Ptime)
+```
+
+### Graph the results
+```{r, message=FALSE, warning=FALSE}
+ggplot(as.data.frame(Ptime), aes(year, Population)) +
+  geom_point() +
+  labs(y="Population", x = "years", title = "Population Growth over 50 Years") +
+  theme(plot.title = element_text(hjust = 0.5))
+  
 ```
 
